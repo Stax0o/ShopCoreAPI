@@ -21,8 +21,23 @@ public class ProductController {
         return productService.create(productDTO);
     }
 
-    @GetMapping
+    @GetMapping("/findAll")
     public List<ProductDTO> findAll() {
         return productService.findAll();
+    }
+
+    @GetMapping
+    public ProductDTO findByName(@Valid @RequestParam String name) {
+        return productService.findByName(name);
+    }
+
+    @PutMapping
+    public ProductDTO update(@Valid @RequestBody ProductDTO productDTO) {
+        return productService.update(productDTO);
+    }
+
+    @DeleteMapping
+    public ProductDTO delete(@RequestParam Long id) {
+        return productService.delete(id);
     }
 }

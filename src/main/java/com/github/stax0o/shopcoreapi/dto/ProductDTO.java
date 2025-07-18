@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public record ProductDTO(
+        Long id,
         @NotBlank(message = "Название продукта не должно быть пустым")
         String name,
         @Positive(message = "Стоимость должна быть больше 0")
