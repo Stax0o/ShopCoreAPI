@@ -3,6 +3,7 @@ package com.github.stax0o.shopcoreapi.controller;
 import com.github.stax0o.shopcoreapi.dto.ProductDTO;
 import com.github.stax0o.shopcoreapi.service.ProductService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ProductDTO findByName(@Valid @RequestParam String name) {
+    public ProductDTO findByName(@RequestParam @NotBlank(message = "Название не должно быть пустым") String name) {
         return productService.findByName(name);
     }
 
